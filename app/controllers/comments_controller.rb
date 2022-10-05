@@ -3,9 +3,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @blog.comments.build(comment_params)
-
     respond_to do |format|
-      binding.pry
+      format.html
+      format.js
       if @comment.save
         flash.now[:notice] = 'コメントが投稿されました'
         format.js { render :index }
